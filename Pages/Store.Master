@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" Inherits="GameStore.Pages.Store" %>
+<%@ Register TagPrefix="GS" TagName="CategoryLinks" Src="~/Controls/CategoryList.ascx" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>GameStore</title>
+    <link rel="stylesheet" href="/Content/NewStyles.css" />
+    <%: System.Web.Optimization.Scripts.Render("~/bundles/validation") %>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <div class="toplinks_bar">
+                <div id="toplinks">
+                    <div id="toplinks_inner">
+				        <asp:LoginStatus ID="LoginStatus2" runat="server"                          
+                            CssClass="toplinks"
+                            LoginText="Войти"
+                            LogoutText="Выйти" />
+			        </div>
+                </div>
+                <asp:LoginView ID="LoginView1" runat="server">
+                    <LoggedInTemplate>
+                        <GS:CartSummary runat="server" />
+                    </LoggedInTemplate>
+                    <RoleGroups>
+                        <asp:RoleGroup Roles="Admin">
+                            <ContentTemplate>        
+                                <GS:CartSummary runat="server" />
+                                <div class="admin_btn">
+                                    <a   href="<%= GetAdminLink() %>">Редактировать</a>
+                                </div>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                    </RoleGroups>
+                </asp:LoginView>
+            </div>
+
+            <div class="hdr_center_wrapper">              
+                <div class="clearer">&nbsp;</div>
+		        <div id="site_title">
+                    <h1><a href="<%= GetHomeLink() %>">Gamer <span>Shop</span></a></h1>
+		            <p>Магазин продажи компьютерных игр</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="navigation">
+	        <div class="center_wrapper">
+	            <GS:CategoryLinks runat="server" />
+		        <div class="clearer">&nbsp;</div>
+	        </div>
+        </div>
+
+
+        <div id="main_wrapper_outer">
+	        <div id="main_wrapper_inner">
+		        <div class="center_wrapper">
+			        <div class="left" id="main">
+				        <div id="main_content">
+                            <asp:ContentPlaceHolder ID="bodyContent" runat="server" />
+				        </div>
+			        </div>
+
+			        <div class="right" id="sidebar">
+
+				        <div id="sidebar_content">
+                            <div class="box">
+                                <div class="box_title">Сategories</div>
+                                    <div class="box_content">
+				                        <GS:CategoryLinks runat="server" />
+                                    </div>
+				            </div>
+                        </div>
+			        </div>
+			
+			        <div class="clearer">&nbsp;</div>
+
+		        </div>
+	        </div>
+        </div>
+
+        <div id="footer">
+	        <div class="center_wrapper">
+
+		        <div class="left">
+			        &copy; 2017 GameStore.com - Your the best shop
+		        </div>
+		        <div class="right">
+			        <a href="#">Website template</a> by <a href="#">DAS</a> 
+		        </div>
+		
+		        <div class="clearer">&nbsp;</div>
+
+	        </div>
+        </div>
+
+    </form>
+</body>
+</html>

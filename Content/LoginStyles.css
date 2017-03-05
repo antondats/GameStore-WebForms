@@ -1,0 +1,31 @@
+﻿body {
+    background: url(img/grain.gif);
+}
+
+.login_wrapper {
+        margin: 0 auto;
+        width: 31%;
+}
+
+.Login {
+    border-radius: 40px;
+}
+input { 
+    margin: 2px;
+    background-color: #F2F2EB;
+}
+
+input:focus {
+    background-color: white;
+    border: 2px #443F37 solid;
+    outline: none;
+}
+
+a {
+    color: #554433;
+}
+
+.Title {
+    padding: 3px 10px;
+}
+
